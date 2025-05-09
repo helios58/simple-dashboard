@@ -40,14 +40,6 @@ const Form = ({ setStartTimestamp, setEndTimestamp }) => {
           />
         </LocalizationProvider>
 
-        <FormControl size="small">
-          <Select defaultValue="monthly" sx={{ minWidth: 120, backgroundColor: '#fff' }}>
-            <MenuItem value="daily">Daily</MenuItem>
-            <MenuItem value="weekly">Weekly</MenuItem>
-            <MenuItem value="monthly">Monthly</MenuItem>
-            <MenuItem value="yearly">Yearly</MenuItem>
-          </Select>
-        </FormControl>
       </Box>
     </Box>
   );

@@ -49,38 +49,6 @@ body {
 }
 
 
-@media (min-width: 768px)  and ( max-width: 1024px) {
-  .card-list {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-  }
-  
-  .card-list > :nth-child(1) {
-    grid-column: span 2;
-  }
-  
-  .card-list > :nth-child(2) {
-    grid-column: span 2;
-  }
-  
-  .card-list > :nth-child(6) {
-    grid-column: span 4;
-    grid-row: span 1;
-  }
-}
-
-@media (min-width: 480px) and (max-width: 768px) {
-  .card-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .card-list > * {
-    grid-column: auto !important;
-    grid-row: auto !important;
-  }
-}
-
 
 .graph {
   position: absolute;
@@ -113,4 +81,39 @@ body {
   position: relative;
   top: 50px;
   color: #4A4A68;
+}
+.insightCard {
+  width: '25%'; padding: 3px;
+}
+/* For screens ≤1366px */
+@media only screen and (max-width: 1366px) {
+  /* Hide the 6th item on screens ≤1366px */
+  .card-list > :nth-child(6) {
+    display: none !important;
+  }
+
+  /* Flex layout for smaller screens */
+  .card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  /* Adjust items to take 50% width on screens ≤1366px */
+  .card-list > div {
+    flex: 1 1 calc(50% - 16px); /* Each item will take half the width minus the gap */
+  }
+}
+
+/* For screens ≤480px */
+@media only screen and (max-width: 480px) {
+  .card-list > div {
+    flex: 1 1 100%; /* Each item will take the full width on very small screens */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+ 
 }

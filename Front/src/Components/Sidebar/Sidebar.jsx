@@ -33,7 +33,6 @@ const Sidebar = () => {
                         arrow
                     >
                         <ListItem
-                            button
                             sx={{
                                 marginTop: 1,
                                 minHeight: 48,

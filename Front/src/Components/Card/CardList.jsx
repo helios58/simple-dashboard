@@ -4,8 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { getCardData } from "../../Services/Data";
 
 const CardList = ({ startTimestamp, endTimestamp }) => {
-    console.log("startTimestamp", startTimestamp);
-    console.log("endTimestamp", endTimestamp);
 
     const pathParts = window.location.pathname.split('/');
     const id = pathParts[pathParts.length - 1];
@@ -17,17 +15,16 @@ const CardList = ({ startTimestamp, endTimestamp }) => {
     const [averageAmount, setAverageAmount] = useState([]);
 
     useEffect(() => {
-        // Only call the API if both startTimestamp and endTimestamp are defined
-            getCardData(id, startTimestamp, endTimestamp)
-                .then((res) => {
-                    setAmount(res.totalAmount.toFixed(2));
-                    setTransactions(res.transactionCount);
-                    setInfluencers(res.influencersCount);
-                    setActiveInfluencers(res.activeInfluencersCount);
-                    setAverageAmount(res.averageAmount.toFixed(2));
-                })
-                .catch((err) => console.error('Error fetching card data:', err));
-    }, [id, startTimestamp, endTimestamp]); 
+        getCardData(id, startTimestamp, endTimestamp)
+            .then((res) => {
+                setAmount(res.totalAmount.toFixed(2));
+                setTransactions(res.transactionCount);
+                setInfluencers(res.influencersCount);
+                setActiveInfluencers(res.activeInfluencersCount);
+                setAverageAmount(res.averageAmount.toFixed(2));
+            })
+            .catch((err) => console.error('Error fetching card data:', err));
+    }, [id, startTimestamp, endTimestamp]);
 
     const data = [
         {
@@ -75,9 +72,14 @@ const CardList = ({ startTimestamp, endTimestamp }) => {
             </Typography>
             <div className="card-list">
                 {data.map((item, index) => (
-                    <Card key={index} item={item} />
+                    <Card
+                        key={index}
+                        item={item}
+                        className={item.isGraph ? 'hide-graph' : ''}
+                    />
                 ))}
             </div>
+
         </div>
     );
 };

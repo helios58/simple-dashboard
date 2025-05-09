@@ -10,12 +10,15 @@ export default function MediaCard({ item }) {
         <Card>
             {
                 item.isGraph ? <>
-                    <div className='graph'>
+                    <div className='graph' sx={{ display: { xs: 'none', sm: 'none', md: 'block' }}}>
                         <Graph />
                     </div>
                     <CardContent>
                         <Typography gutterBottom className='text-center' style={{ color: '#4A4A68' }} component="div">
                             {item.title}
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary' }} className='text-center'>
+                            {item.paragraph}
                         </Typography>
                     </CardContent>
                 </> : <>

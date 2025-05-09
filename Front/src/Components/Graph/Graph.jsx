@@ -12,8 +12,8 @@ const Graph = () => {
     useEffect(() => {
         getSaleScore(id)
             .then((res) => {
-                    setSaleScore(res); 
-                }
+                setSaleScore(res);
+            }
             )
             .catch((err) => console.error('Error', err));
     }, [id]);
@@ -27,8 +27,8 @@ const Graph = () => {
     }
     return (
         <div style={{ width: 270, height: 270 }}>
-
-            <div
+            
+            <box
                 display="flex"
                 flexDirection="column"
                 justifyContent="center"
@@ -38,7 +38,8 @@ const Graph = () => {
                 borderRadius="8px"
                 boxShadow={3}
             >
-                <CircularProgressbarWithChildren
+                <CircularProgressbarWithChildren 
+                
                     value={percentage}
                     styles={{
                         path: {
@@ -52,7 +53,7 @@ const Graph = () => {
                     }}
                 >
 
-                    <Typography variant="h6" className='percentage'>
+                    <Typography variant="h6" className='percentage hiden-sm-md'>
                         {percentage}%
                     </Typography>
                 </CircularProgressbarWithChildren>
@@ -65,7 +66,7 @@ const Graph = () => {
                         </linearGradient>
                     </defs>
                 </svg>
-            </div>
+            </box>
         </div>
     );
 };
