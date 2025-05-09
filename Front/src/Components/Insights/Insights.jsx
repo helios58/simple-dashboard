@@ -34,29 +34,31 @@ export default function Insights() {
 
   return (
     <Box sx={{ padding: 3 }}>
-      <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#112D4E', mb: 2 }}>
-        Insights
-      </Typography>
+  <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#112D4E', mb: 2 }}>
+    Insights
+  </Typography>
 
-      <Box sx={{ display: 'flex', gap: 2 }}>
-         <Card sx={{ width: { sm: '50%' }, padding: 3 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              {insightsData.slice(0, 3).map((item, index) => (
-                <InsightItem key={index} {...item} />
-              ))}
-            </Grid>
-            <Grid item xs={6}>
-              {insightsData.slice(3, 6).map((item, index) => (
-                <InsightItem key={index} {...item} />
-              ))}
-            </Grid>
-          </Grid>
-        </Card>
+  <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+    {/* Insights Card */}
+    <Card sx={{ width: { xs: '100%', sm: '100%', md: '40%', xl: '40%'}, padding: 3 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          {insightsData.slice(0, 3).map((item, index) => (
+            <InsightItem key={index} {...item} />
+          ))}
+        </Grid>
+        <Grid item xs={6}>
+          {insightsData.slice(3, 6).map((item, index) => (
+            <InsightItem key={index} {...item} />
+          ))}
+        </Grid>
+      </Grid>
+    </Card>
 
         <CountryCard country={country} />
         <InfluencerCard influencer={influencer} />
       </Box>
+      
     </Box>
   );
 }
